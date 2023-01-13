@@ -15,6 +15,7 @@ const printer = new PdfPrinter(fonts); // ---------- printer = pdfprinter with t
 
 export const generateBlogPDF = async (blog) => {
   // ------------------------- our main and the only function here --------------------------   ✅
+  //---------------- for images 🌟
   let imagePart = {};
   if (blog.cover) {
     const response = await axios.get(blog.cover, {
@@ -27,6 +28,7 @@ export const generateBlogPDF = async (blog) => {
     const base64Image = `data:image/${extension};base64,${base64}`;
     imagePart = { image: base64Image, width: 500, margin: [0, 0, 0, 40] };
   }
+  //-------------- for document 🌟
   const docDefinition = {
     content: [
       imagePart,

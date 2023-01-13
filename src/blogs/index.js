@@ -93,6 +93,7 @@ router.post(
 // get single blog's PDF
 router.get("/:id/pdf", async (req, res, next) => {
   try {
+    //---------------------------------------------- CASUAL GET REQUEST --------------------------------------------------------------
     const fileAsBuffer = fs.readFileSync(blogsFilePath);
     const fileAsString = fileAsBuffer.toString();
     const fileAsJSONArray = JSON.parse(fileAsString);
@@ -104,6 +105,7 @@ router.get("/:id/pdf", async (req, res, next) => {
         .status(404)
         .send({ message: `blog with ${req.params.id} is not found!` });
     }
+    //---------------------------------------------- HERE STARTS THE PDF PART --------------------------------------------------------------
     const pdfStream = await generateBlogPDF(blog); //if it's successful (found it), use generateBlogPdf function from ../utils/pdf/index.js
 
     res.setHeader("Content-Type", "application/pdf"); //type of the content (important for the browser default saving-choice)
@@ -114,7 +116,7 @@ router.get("/:id/pdf", async (req, res, next) => {
         console.log(err);
       }
     });
-    pdfStream.end();
+    pdfStream.end(); //don't forget to finish streaming (old stuff)
     //dont care bout it
   } catch (error) {
     res.send(500).send({ message: error.message });
