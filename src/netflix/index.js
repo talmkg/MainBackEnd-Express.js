@@ -175,10 +175,9 @@ router.put("/:id", async (req, res, next) => {
     const changedMedia = {
       ...previousMediaData,
       ...req.body,
-      updatedAt: new Date(),
       id: req.params.id,
     };
-    fileAsJSONArray[mediaIndex] = changedmedia;
+    fileAsJSONArray[mediaIndex] = changedMedia;
 
     fs.writeFileSync(mediasFilePath, JSON.stringify(fileAsJSONArray));
     res.send(changedMedia);
