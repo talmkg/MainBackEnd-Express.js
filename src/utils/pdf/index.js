@@ -1,6 +1,7 @@
-import PdfPrinter from "pdfmake";
-import striptags from "striptags";
+import PdfPrinter from "pdfmake"; //the library itself ✅
+import striptags from "striptags"; //delete script tags (cuz we are sending html with scripts) (not core library) ✅
 import axios from "axios";
+// ------------------------- here are just the fonts choices --------------------------  ✅
 const fonts = {
   Roboto: {
     normal: "Helvetica",
@@ -10,9 +11,10 @@ const fonts = {
   },
 };
 
-const printer = new PdfPrinter(fonts);
+const printer = new PdfPrinter(fonts); // ---------- printer = pdfprinter with these specific fonts ✅
 
 export const generateBlogPDF = async (blog) => {
+  // ------------------------- our main and the only function here --------------------------   ✅
   let imagePart = {};
   if (blog.cover) {
     const response = await axios.get(blog.cover, {
@@ -33,6 +35,12 @@ export const generateBlogPDF = async (blog) => {
     ],
   };
 
-  const pdfDoc = printer.createPdfKitDocument(docDefinition);
-  return pdfDoc;
+  const pdfDoc = printer.createPdfKitDocument(docDefinition); //printer.createPdfKitDocument returns a stream
+  return pdfDoc; //actual stream
 };
+
+/*           ----------------------------------------------- WHAT ARE STREAMS? --------------------------------------------------
+
+Streams are a way to handle reading/writing files, network communications, or any kind of end-to-end information exchange in an efficient way.
+
+What makes streams unique, is that instead of a program reading a file into memory all at once like in the traditional way, streams read chunks of data piece by piece, processing its content without keeping it all in memory. */
