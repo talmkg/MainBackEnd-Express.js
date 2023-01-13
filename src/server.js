@@ -8,6 +8,8 @@ import authorsRouter from "./authors/index.js";
 
 import blogsRouter from "./blogs/index.js";
 
+import mediasRouter from "./netflix/index.js";
+
 import { errorHandler } from "./errorHandlers.js";
 
 import path, { dirname } from "path";
@@ -53,6 +55,8 @@ server.use(express.static(publicDirectory));
 server.use("/authors", authorsRouter);
 
 server.use("/blogs", blogsRouter);
+
+server.use("/netflix", mediasRouter);
 
 server.use(errorHandler);
 
