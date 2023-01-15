@@ -7,10 +7,10 @@ const schema = {
       errorMessage: "title validation failed , type must be string  ",
     },
   },
-  category: {
+  nickname: {
     in: ["body"],
     isString: {
-      errorMessage: "category validation failed , type must be  string ",
+      errorMessage: "nickname validation failed , type must be string ",
     },
   },
   content: {
@@ -34,7 +34,7 @@ const schema = {
   "readTime.value": {
     in: ["body"],
     isNumeric: {
-      errorMessage: "readTime.value  validation failed , type must be numeric ",
+      errorMessage: "readTime.value  validation failed , type must be numeric",
     },
   },
   "readTime.unit": {
