@@ -1,14 +1,9 @@
 import express from "express";
-
 import fs from "fs";
-
 import uniqid from "uniqid";
-
 import path, { dirname } from "path";
-
 import { fileURLToPath } from "url";
 import { parseFile } from "../utils/upload/index.js";
-
 import {
   checkBlogPostSchema,
   checkCommentSchema,
@@ -16,7 +11,6 @@ import {
   checkValidationResult,
 } from "./validation.js";
 import { generateBlogPDF } from "../utils/pdf/index.js";
-
 import { pipeline } from "stream";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -297,5 +291,7 @@ router.put("/:id/cover", parseFile.single("cover"), async (req, res, next) => {
     res.send(500).send({ message: error.message });
   }
 });
+//
 
+//
 export default router;

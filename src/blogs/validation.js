@@ -43,12 +43,12 @@ const schema = {
       errorMessage: "readTime.unit  validation failed , type must be string ",
     },
   },
-  cover: {
-    in: ["body"],
-    isString: {
-      errorMessage: "cover validation failed , type must be string",
-    },
-  },
+  // cover: {
+  //   in: ["body"],
+  //   isString: {
+  //     errorMessage: "cover validation failed , type must be string",
+  //   },
+  // },
 };
 
 const searchSchema = {
