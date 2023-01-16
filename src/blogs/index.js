@@ -54,35 +54,30 @@ router.get(
 );
 
 // create  blog
-router.post(
-  "/",
-  checkBlogPostSchema,
-  checkValidationResult,
-  async (req, res, next) => {
-    try {
-      const blog = {
-        id: uniqid(),
-        ...req.body,
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      };
+router.post("/", checkBlogPostSchema, async (req, res, next) => {
+  try {
+    const blog = {
+      id: uniqid(),
+      ...req.body,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    };
 
-      const fileAsBuffer = fs.readFileSync(blogsFilePath);
+    const fileAsBuffer = fs.readFileSync(blogsFilePath);
 
-      const fileAsString = fileAsBuffer.toString();
+    const fileAsString = fileAsBuffer.toString();
 
-      const fileAsJSONArray = JSON.parse(fileAsString);
+    const fileAsJSONArray = JSON.parse(fileAsString);
 
-      fileAsJSONArray.push(blog);
+    fileAsJSONArray.push(blog);
 
-      fs.writeFileSync(blogsFilePath, JSON.stringify(fileAsJSONArray));
+    fs.writeFileSync(blogsFilePath, JSON.stringify(fileAsJSONArray));
 
-      res.send(blog);
-    } catch (error) {
-      res.send(500).send({ message: error.message });
-    }
+    res.send(blog);
+  } catch (error) {
+    res.send(500).send({ message: error.message });
   }
-);
+});
 
 // get single blog's PDF
 router.get("/:id/pdf", async (req, res, next) => {
