@@ -1,1 +1,44 @@
-[{"name":"Tim","surname":"Afanasiev","nickname":"@talmkg","password":"TTiiMMaa_2004"},{"id":"1cku607pold1dyecq","name":"Tim","surname":"Afanasiev","nickname":"@talmkg","password":"TTiiMMaa_2004","createdAt":"2023-01-18T08:12:02.473Z","updatedAt":"2023-01-18T12:06:54.035Z","pfp":"https://res.cloudinary.com/dp3i1dce4/image/upload/v1674043567/hq177gbms5ghlkzo2hkw.jpg","background":"https://res.cloudinary.com/dp3i1dce4/image/upload/v1674043614/i6cosm1h5l9hx67tgk2h.jpg"}]
+[
+  {
+    "id": "1cku607pold1dyecq",
+    "name": "Tim",
+    "surname": "Afanasiev",
+    "nickname": "@talmkg",
+    "password": "TTiiMMaa_2004",
+    "createdAt": "2023-01-18T08:12:02.473Z",
+    "updatedAt": "2023-01-18T12:06:54.035Z",
+    "pfp": "https://res.cloudinary.com/dp3i1dce4/image/upload/v1674043567/hq177gbms5ghlkzo2hkw.jpg",
+    "background": "https://res.cloudinary.com/dp3i1dce4/image/upload/v1674043614/i6cosm1h5l9hx67tgk2h.jpg"
+  },
+  {
+    "id": "4059h1kld1pc2hk",
+    "name": "Sandro",
+    "surname": "Ierna",
+    "nickname": "TheFirstUser",
+    "password": "Thefirstuser1~",
+    "createdAt": "2023-01-18T13:30:36.056Z",
+    "updatedAt": "2023-01-18T13:30:36.056Z"
+  },
+  {
+    "id": "4059h1kld1tv39p",
+    "name": "Cane",
+    "surname": "Void",
+    "nickname": "damdam@damdam",
+    "password": "Arantrok5560",
+    "createdAt": "2023-01-18T15:37:21.997Z",
+    "updatedAt": "2023-01-18T15:37:23.587Z",
+    "pfp": "https://res.cloudinary.com/dp3i1dce4/image/upload/v1674056242/mnwzmrrjtcdx2wofbdyc.jpg",
+    "background": "https://res.cloudinary.com/dp3i1dce4/image/upload/v1674056243/avw0be3wvo1mqphpruva.jpg"
+  },
+  {
+    "id": "4059h1kld1ym2nd",
+    "name": "Tim",
+    "surname": "Afanasiev",
+    "nickname": "talmkg",
+    "password": "TTiiMMaa_2004",
+    "createdAt": "2023-01-18T17:50:19.369Z",
+    "updatedAt": "2023-01-18T17:50:22.184Z",
+    "pfp": "https://res.cloudinary.com/dp3i1dce4/image/upload/v1674064220/olwqch82vbomrokhoe7f.jpg",
+    "background": "https://res.cloudinary.com/dp3i1dce4/image/upload/v1674064221/u6p5l0kqjqdqv0trj1dc.jpg"
+  }
+]
