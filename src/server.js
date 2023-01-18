@@ -1,7 +1,6 @@
 import express from "express";
 import cors from "cors";
 import listEndpoints from "express-list-endpoints";
-import authorsRouter from "./authors/index.js";
 import blogsRouter from "./blogs/index.js";
 import mediasRouter from "./netflix/index.js";
 import usersRouter from "./users/index.js";
@@ -40,14 +39,13 @@ server.use(cors());
 server.use(express.json());
 server.use(express.static(publicDirectory));
 
-server.use("/authors", authorsRouter);
 server.use("/blogs", blogsRouter);
 server.use("/netflix", mediasRouter);
 server.use("/users", usersRouter);
 
 server.use(errorHandler);
 
-console.log(listEndpoints(server));
+console.log(listEndpoints(usersRouter));
 
 server.listen(PORT, () => console.log("✅ Server is running on port : ", PORT));
 

@@ -26,21 +26,6 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-router.get("/search", checkValidationResult, async (req, res, next) => {
-  try {
-    const { title } = req.query;
-    const fileAsBuffer = fs.readFileSync(usersFilePath);
-    const fileAsString = fileAsBuffer.toString();
-    const array = JSON.parse(fileAsString);
-    const filtered = array.filter((user) =>
-      user.title.toLowerCase().includes(title.toLowerCase())
-    );
-    res.send(filtered);
-  } catch (error) {
-    res.send(500).send({ message: error.message });
-  }
-});
-
 // create  user
 router.post("/", signupSchema, async (req, res, next) => {
   try {
@@ -149,9 +134,7 @@ router.put("/:id", async (req, res, next) => {
 router.put("/:id/pfp", parseFile.single("pfp"), async (req, res, next) => {
   try {
     const fileAsBuffer = fs.readFileSync(usersFilePath);
-
     const fileAsString = fileAsBuffer.toString();
-
     let fileAsJSONArray = JSON.parse(fileAsString);
 
     const userIndex = fileAsJSONArray.findIndex(
@@ -162,22 +145,56 @@ router.put("/:id/pfp", parseFile.single("pfp"), async (req, res, next) => {
         .status(404)
         .send({ message: `user with ${req.params.id} is not found!` });
     }
-    const previoususerData = fileAsJSONArray[userIndex];
-    const changeduser = {
-      ...previoususerData,
+    const previousUserData = fileAsJSONArray[userIndex];
+    const changedUser = {
+      ...previousUserData,
       pfp: req.file.path,
       updatedAt: new Date(),
       id: req.params.id,
     };
-    fileAsJSONArray[userIndex] = changeduser;
+    fileAsJSONArray[userIndex] = changedUser;
 
     fs.writeFileSync(usersFilePath, JSON.stringify(fileAsJSONArray));
-    res.send(changeduser);
+    res.send(changedUser);
   } catch (error) {
     console.log(error);
     res.send(500).send({ message: error.message });
   }
 });
+router.put(
+  "/:id/background",
+  parseFile.single("background"),
+  async (req, res, next) => {
+    try {
+      const fileAsBuffer = fs.readFileSync(usersFilePath);
+      const fileAsString = fileAsBuffer.toString();
+      let fileAsJSONArray = JSON.parse(fileAsString);
+
+      const userIndex = fileAsJSONArray.findIndex(
+        (user) => user.id === req.params.id
+      );
+      if (!userIndex == -1) {
+        res
+          .status(404)
+          .send({ message: `user with ${req.params.id} is not found!` });
+      }
+      const previousUserData = fileAsJSONArray[userIndex];
+      const changedUser = {
+        ...previousUserData,
+        background: req.file.path,
+        updatedAt: new Date(),
+        id: req.params.id,
+      };
+      fileAsJSONArray[userIndex] = changedUser;
+
+      fs.writeFileSync(usersFilePath, JSON.stringify(fileAsJSONArray));
+      res.send(changedUser);
+    } catch (error) {
+      console.log(error);
+      res.send(500).send({ message: error.message });
+    }
+  }
+);
 //
 
 //
