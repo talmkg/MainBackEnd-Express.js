@@ -1,29 +1,19 @@
 import express from "express";
-
 import cors from "cors";
-
 import listEndpoints from "express-list-endpoints";
-
 import authorsRouter from "./authors/index.js";
-
 import blogsRouter from "./blogs/index.js";
-
 import mediasRouter from "./netflix/index.js";
-
+import usersRouter from "./users/index.js";
 import { errorHandler } from "./errorHandlers.js";
-
 import path, { dirname } from "path";
-
 import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
-
 const __dirname = dirname(__filename);
-
 const publicDirectory = path.join(__dirname, "../public");
 
 const server = express();
-
 const { PORT } = process.env;
 
 const whiteList = [
@@ -47,16 +37,13 @@ const corsOptions = {
 };
 
 server.use(cors());
-
 server.use(express.json());
-
 server.use(express.static(publicDirectory));
 
 server.use("/authors", authorsRouter);
-
 server.use("/blogs", blogsRouter);
-
 server.use("/netflix", mediasRouter);
+server.use("/users", usersRouter);
 
 server.use(errorHandler);
 
